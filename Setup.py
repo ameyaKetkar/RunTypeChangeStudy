@@ -107,7 +107,7 @@ def setupAt(path, mavenHome='/usr/local/Cellar/maven/3.6.3', project={'guice': '
 
     inp = osp.join(type_change_miner, "Input")
 
-    addDirectoryIfNotExists(inp)
+   # addDirectoryIfNotExists(inp)
 
     updatePropertyFile(typechangestudy, simple_typechange_miner, mavenHome)
     updatePropertyFile(typechangestudy, type_change_miner)
