@@ -40,7 +40,7 @@ def setupAt(path, mavenHome='/usr/local/Cellar/maven/3.6.3', project={'guice': '
 
 
     inputProjects = {}
-    if len(systemArgs) > 3 and (len(systemArgs) - 3) % 2 == 0:
+    if len(systemArgs) >= 3 and (len(systemArgs) - 3) % 2 == 0:
         path = systemArgs[1]
         mavenHome = systemArgs[2]
         counter = 3
