@@ -105,7 +105,11 @@ def setupAt(path, mavenHome='/usr/local/Cellar/maven/3.6.3', project={'guice': '
 
     addDirectoryIfNotExists(output)
 
-    inp = osp.join(type_change_miner, "Input")
+    codeMapping = osp.join(output,"CodeMapping")
+
+    addDirectoryIfNotExists(codeMapping)
+
+    #inp = osp.join(type_change_miner, "Input")
 
    # addDirectoryIfNotExists(inp)
 
