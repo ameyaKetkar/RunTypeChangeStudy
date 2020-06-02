@@ -7,7 +7,8 @@ import boto3
 
 import javaproperties
 from javaproperties import Properties
-
+from botocore import UNSIGNED
+from botocore.client import Config
 
 import os
 projectPath = os.path.dirname(os.path.abspath(__file__))
@@ -26,7 +27,7 @@ systemArgs = sys.argv
 
 def setupAt(path, mavenHome='/usr/local/Cellar/maven/3.6.3', project={'guice': 'https://github.com/google/guice.git'}):
 
-    typechangestudy = osp.join(path, "TypeChangeStudy")
+    
 
     print('Setup started!!!')
 
@@ -49,6 +50,7 @@ def setupAt(path, mavenHome='/usr/local/Cellar/maven/3.6.3', project={'guice': '
         if(len(inputProjects) > 0):
             project = inputProjects
 
+    typechangestudy = osp.join(path, "TypeChangeStudy")
     config.set('main', 'path', path)
     config.set('main', 'mavenHome', mavenHome)
 
@@ -153,7 +155,7 @@ def updatePropertyFile(path, stcm, mavenPath=''):
 # https://changetype.s3.us-east-2.amazonaws.com/docs/apache-tinkerpop-gremlin-server-3.4.4.zip
 
 def downloadGremlinServer(typechangestudy):
-    s3 = boto3.client('s3')
+    s3 = boto3.client('s3', config=Config(signature_version=UNSIGNED))
     if not osp.isfile(osp.join(typechangestudy, 'apache-tinkerpop-gremlin-server-3.4.4.zip')):
         print('Downloading ', 'apache-tinkerpop-gremlin-server-3.4.4.zip')
         s3.download_file('changetype', 'docs/apache-tinkerpop-gremlin-server-3.4.4.zip',
