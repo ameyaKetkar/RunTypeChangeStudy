@@ -29,4 +29,5 @@ os.chdir(dataAnalysis)
 
 cmd = ['python ToHtml.py']
 
-result = execute(cmd, str(dataAnalysis))
+for result in execute(cmd, str(dataAnalysis)):
+    print(result)

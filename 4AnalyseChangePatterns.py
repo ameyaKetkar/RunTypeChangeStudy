@@ -29,4 +29,5 @@ os.chdir(TypechangeMiner)
 
 cmd = ['java', '-cp', 'lib/*', 'org.osu.AnalyseChangePatterns']
 
-result = execute(cmd, str(TypechangeMiner))
+for result in execute(cmd, str(TypechangeMiner)):
+    print(result)
