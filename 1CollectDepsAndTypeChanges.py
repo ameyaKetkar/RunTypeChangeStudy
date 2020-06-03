@@ -25,7 +25,7 @@ def run_command(command, cwd = ''):
         p = subprocess.Popen(command,
                      stdout=subprocess.PIPE,
                      stderr=subprocess.STDOUT,
-                     ced =cwd)
+                     cwd =cwd)
         return iter(p.stdout.readline, b'')
 
 
