@@ -15,11 +15,19 @@ def runLongCommand(s, cwd =''):
         o, e = out.communicate()
         return e, o
 
-def run_command(command):
-    p = subprocess.Popen(command,
+def run_command(command, cwd = ''):
+    if cwd == '' :
+        p = subproc ess.Popen(command,
                      stdout=subprocess.PIPE,
                      stderr=subprocess.STDOUT)
-    return iter(p.stdout.readline, b'')
+        return iter(p.stdout.readline, b'')
+    else:
+        p = subproc ess.Popen(command,
+                     stdout=subprocess.PIPE,
+                     stderr=subprocess.STDOUT,
+                     ced =cwd)
+        return iter(p.stdout.readline, b'')
+
 
 
 projectPath = os.path.dirname(os.path.abspath(__file__))
