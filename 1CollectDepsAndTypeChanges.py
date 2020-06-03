@@ -22,7 +22,7 @@ def run_command(command, cwd = ''):
                      stderr=subprocess.STDOUT)
         return iter(p.stdout.readline, b'')
     else:
-        p = subproc ess.Popen(command,
+        p = subprocess.Popen(command,
                      stdout=subprocess.PIPE,
                      stderr=subprocess.STDOUT,
                      ced =cwd)
