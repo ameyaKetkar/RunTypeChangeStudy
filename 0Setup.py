@@ -175,11 +175,5 @@ def downloadGremlinServer(typechangestudy):
     print()
 
 
-def runLongCommand(s):
-    out = subprocess.Popen(s, stdout=subprocess.PIPE)
-    out.wait()
-    o, e = out.communicate()
-    return e, o
-
 
 setupAt('/Users/ameya/Research/Test')
