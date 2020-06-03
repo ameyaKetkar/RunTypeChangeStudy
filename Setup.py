@@ -25,7 +25,7 @@ systemArgs = sys.argv
 
 
 
-def setupAt(path, mavenHome='/usr/local/Cellar/maven/3.6.3', project={'honest-profiler': 'https://github.com/jvm-profiling-tools/honest-profiler.git}):
+def setupAt(path, mavenHome='/usr/local/Cellar/maven/3.6.3', project={'guice': 'https://github.com/google/guice.git'}):
 
     
 
