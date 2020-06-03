@@ -1,6 +1,6 @@
 import subprocess
 import os
-import os
+
 
 
 
@@ -27,7 +27,9 @@ setupPath = config.get('main','path')
 dataAnalysis = os.path.join(os.path.join(os.path.normpath(setupPath), 'TypeChangeStudy'), 'DataAnalysis')
 os.chdir(dataAnalysis)
 
-cmd = ['python ToHtml.py']
+# cmd = ['python', 'ToHtml.py']
 
-for result in execute(cmd, str(dataAnalysis)):
-    print(result)
+os.system('python3 ToHtml.py')
+
+# for result in execute(cmd, str(dataAnalysis)):
+  #  print(result)
