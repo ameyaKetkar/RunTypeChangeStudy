@@ -7,19 +7,14 @@ import os
 
 
 
-def runLongCommand(s, cwd =''):
-    if cwd == '':
-        out = subprocess.Popen(s, stdout=subprocess.PIPE)
-        out.stdout
-        out.wait()
-        o, e = out.communicate()
-        return e, o
-    else :
-        out = subprocess.Popen(s, stdout=subprocess.PIPE, cwd = cwd)
-        out.stdout
-        out.wait()
-        o, e = out.communicate()
-        return e, o
+def execute(cmd, cwd):
+    popen = subprocess.Popen(cmd, stdout=subprocess.PIPE, universal_newlines=True, cwd=cwd)
+    for stdout_line in iter(popen.stdout.readline, ""):
+        yield stdout_line 
+    popen.stdout.close()
+    return_code = popen.wait()
+    if return_code:
+        raise subprocess.CalledProcessError(return_code, cmd)
 
 
 
@@ -37,4 +32,4 @@ os.chdir(TypechangeMiner)
 
 cmd = ['java', '-cp', 'lib/*', 'org.osu.TypeFactMiner']
 
-result = runLongCommand(cmd, cwd = str(TypechangeMiner))
+result = execute(cmd, str(TypechangeMiner))

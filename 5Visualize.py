@@ -1,5 +1,6 @@
 import subprocess
 import os
+import os
 
 
 
@@ -13,6 +14,7 @@ def execute(cmd, cwd):
         raise subprocess.CalledProcessError(return_code, cmd)
 
 
+
 projectPath = os.path.dirname(os.path.abspath(__file__))
 
 from configparser import ConfigParser
@@ -22,17 +24,9 @@ config.read(os.path.join(projectPath,'config.ini'))
 
 setupPath = config.get('main','path')
 
-simpleTypechangeMiner = os.path.join(os.path.join(os.path.normpath(setupPath), 'TypeChangeStudy'), 'SimpleTypeChangeMiner')
-os.chdir(simpleTypechangeMiner)
+dataAnalysis = os.path.join(os.path.join(os.path.normpath(setupPath), 'TypeChangeStudy'), 'DataAnalysis')
+os.chdir(dataAnalysis)
 
-cmd = ['java', '-cp', 'lib/*', 'Runner']
+cmd = ['python ToHtml.py']
 
-for result in execute(cmd, str(simpleTypechangeMiner)):
-    print(result)
-
-
-
-
-
-
-
+result = execute(cmd, str(dataAnalysis))
