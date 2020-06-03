@@ -56,7 +56,8 @@ os.chdir(simpleTypechangeMiner)
 
 cmd = ['java', '-cp', 'lib/*', 'Runner']
 
-result = execute(cmd, cwd = str(simpleTypechangeMiner))
+for result in execute(cmd, str(simpleTypechangeMiner)):
+    print(result)
 
 
 
