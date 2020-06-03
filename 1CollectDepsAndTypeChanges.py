@@ -15,6 +15,13 @@ def runLongCommand(s, cwd =''):
         o, e = out.communicate()
         return e, o
 
+def run_command(command):
+    p = subprocess.Popen(command,
+                     stdout=subprocess.PIPE,
+                     stderr=subprocess.STDOUT)
+    return iter(p.stdout.readline, b'')
+
+
 projectPath = os.path.dirname(os.path.abspath(__file__))
 
 from configparser import ConfigParser
@@ -29,7 +36,7 @@ os.chdir(simpleTypechangeMiner)
 
 cmd = ['java', '-cp', 'lib/*', 'Runner']
 
-result = runLongCommand(cmd, cwd = str(simpleTypechangeMiner))
+result = run_command(cmd, cwd = str(simpleTypechangeMiner))
 
 
 
